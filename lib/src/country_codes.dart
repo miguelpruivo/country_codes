@@ -9,7 +9,9 @@ extension on Locale {
 class CountryCodes {
   /// A list of dial codes for every country
   static List<String> dialNumbers() {
-    return codes.values.map((each) => CountryDetails.fromMap(each).dialCode).toList();
+    return codes.values
+        .map((each) => CountryDetails.fromMap(each).dialCode)
+        .toList();
   }
 
   /// Returns the `CountryDetails` for the given [locale].

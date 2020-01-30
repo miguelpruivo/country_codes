@@ -14,7 +14,8 @@ class CountryCodesExampleApp extends StatelessWidget {
           title: const Text('Country codes example app'),
         ),
         body: Builder(builder: (context) {
-          CountryDetails details = CountryCodes.detailsForLocale(Localizations.localeOf(context));
+          CountryDetails details =
+              CountryCodes.detailsForLocale(Localizations.localeOf(context));
           return Center(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -26,7 +27,9 @@ class CountryCodesExampleApp extends StatelessWidget {
                 child: TextFormField(
                   autofocus: true,
                   keyboardType: TextInputType.phone,
-                  inputFormatters: [DialCodeFormatter(Localizations.localeOf(context))],
+                  inputFormatters: [
+                    DialCodeFormatter(Localizations.localeOf(context))
+                  ],
                 ),
               ),
             ],

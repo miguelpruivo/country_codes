@@ -9,7 +9,8 @@ class DialCodeFormatter extends TextInputFormatter {
 
   DialCodeFormatter(this.locale);
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
     final String code = CountryCodes.dialCode(locale);
     if (newValue.text.startsWith(code)) {
       return newValue;
