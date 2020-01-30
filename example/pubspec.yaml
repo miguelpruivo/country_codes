@@ -1,0 +1,22 @@
+name: country_codes_example
+description: Demonstrates how to use the country_codes plugin.
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.6.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  country_codes:
+    path: ../
+
+flutter:
+  uses-material-design: true
+
