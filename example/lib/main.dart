@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:country_codes/country_codes.dart';
 
-void main() => runApp(CountryCodesExampleApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CountryCodes.init();
+  runApp(CountryCodesExampleApp());
+}
 
 class CountryCodesExampleApp extends StatelessWidget {
   @override
@@ -14,8 +18,7 @@ class CountryCodesExampleApp extends StatelessWidget {
           title: const Text('Country codes example app'),
         ),
         body: Builder(builder: (context) {
-          CountryDetails details =
-              CountryCodes.detailsForLocale(Localizations.localeOf(context));
+          CountryDetails details = CountryCodes.detailsForLocale();
           return Center(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -25,11 +28,8 @@ class CountryCodesExampleApp extends StatelessWidget {
               SizedBox(
                 width: 200.0,
                 child: TextFormField(
-                  autofocus: true,
                   keyboardType: TextInputType.phone,
-                  inputFormatters: [
-                    DialCodeFormatter(Localizations.localeOf(context))
-                  ],
+                  inputFormatters: [DialCodeFormatter()],
                 ),
               ),
             ],

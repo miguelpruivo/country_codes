@@ -1,3 +1,12 @@
+## [0.0.5] - 31/01/2020
+
+* Updates README
+
+## [0.0.4] - 31/01/2020
+
+* Adds default `locale` from device region when not provided. For this to work, please call `CountryCodes.init()` before invoking other methods.
+* Overall minor improvements.
+
 ## [0.0.3] - 30/01/2020
 
 * Format
