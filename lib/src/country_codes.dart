@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:country_codes/src/codes.dart';
 import 'package:country_codes/src/country_details.dart';
 import 'package:flutter/services.dart';
@@ -23,6 +25,13 @@ class CountryCodes {
     final String region = await _channel.invokeMethod('getRegion');
     _deviceLocale = Locale('_', region);
     return _deviceLocale != null;
+  }
+
+  /// Returns the current device's `Locale`
+  static Locale getDeviceLocale() {
+    assert(_deviceLocale != null,
+        'Please, make sure you call await init() before calling getDeviceLocale()');
+    return _deviceLocale;
   }
 
   /// A list of dial codes for every country

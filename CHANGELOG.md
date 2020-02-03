@@ -1,3 +1,11 @@
+## [0.0.6+1] - 03/02/2020
+
+* Replaces `FutureOr<Locale>` with `Locale` to make it explicitly synchronous when invoking `getDeviceLocale()`
+
+## [0.0.6] - 03/02/2020
+
+* Exposes device's `Locale` through `getDeviceLocale()` method.
+
 ## [0.0.5] - 31/01/2020
 
 * Updates README
