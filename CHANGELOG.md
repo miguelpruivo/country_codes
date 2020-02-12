@@ -1,3 +1,7 @@
+## [0.0.6+2] - 12/02/2020
+
+* Updates `dialCode()` to receive the [locale] optionally instead of explictly `null` in order to retrieve the device's region dial code.
+
 ## [0.0.6+1] - 03/02/2020
 
 * Replaces `FutureOr<Locale>` with `Locale` to make it explicitly synchronous when invoking `getDeviceLocale()`

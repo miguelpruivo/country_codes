@@ -58,7 +58,7 @@ class CountryCodes {
   }
 
   /// Returns the `dialCode` for the given [locale] or device's locale, if not provided.
-  static String dialCode(Locale locale) {
+  static String dialCode([Locale locale]) {
     return CountryDetails.fromMap(codes[_resolveLocale(locale)]).dialCode;
   }
 
