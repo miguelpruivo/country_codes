@@ -1,3 +1,7 @@
+## [0.1.0] - 13/02/2020
+
+* Exposes device `Locale` (language and country code) instead of country only.
+
 ## [0.0.6+2] - 12/02/2020
 
 * Updates `dialCode()` to receive the [locale] optionally instead of explictly `null` in order to retrieve the device's region dial code.

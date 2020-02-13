@@ -1,5 +1,6 @@
 package com.miguelruivo.flutter.plugin.countrycodes.country_codes
 
+import android.R
 import java.util.Locale
 import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -34,10 +35,12 @@ public class CountryCodesPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "getRegion") {
-      result.success(Locale.getDefault().country)
-    } else {
-      result.notImplemented()
+
+    when {
+        call.method == "getLocale" -> result.success(listOf(Locale.getDefault().language, Locale.getDefault().country))
+        call.method == "getRegion" -> result.success(Locale.getDefault().country)
+        call.method == "getLanguage" -> result.success(Locale.getDefault().language)
+        else -> result.notImplemented()
     }
   }
 

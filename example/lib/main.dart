@@ -19,10 +19,14 @@ class CountryCodesExampleApp extends StatelessWidget {
         ),
         body: Builder(builder: (context) {
           CountryDetails details = CountryCodes.detailsForLocale();
+          Locale locale = CountryCodes.getDeviceLocale();
           return Center(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Text(
+                  'Device locale: ${locale.languageCode}-${locale.countryCode}'),
+              Text('Name: ${details.name}'),
               Text('Alpha 2: ${details.alpha2Code}'),
               Text('Dial Code: ${details.dialCode}'),
               SizedBox(

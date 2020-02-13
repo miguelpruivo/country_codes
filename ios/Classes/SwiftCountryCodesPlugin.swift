@@ -9,8 +9,19 @@ public class SwiftCountryCodesPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    if(call.method == "getRegion"){
+    
+    switch call.method {
+    case "getRegion":
         result(Locale.current.regionCode)
+        break
+    case "getLanguage":
+        result(Locale.current.languageCode)
+        break
+    case "getLocale":
+        result([Locale.current.languageCode, Locale.current.regionCode])
+        break
+    default:
+        result(FlutterMethodNotImplemented);
     }
   }
 }

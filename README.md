@@ -1,4 +1,7 @@
 # Country Codes
+ <a href="https://pub.dartlang.org/packages/country_codes">
+    <img alt="Country Codes" src="https://img.shields.io/pub/v/country_codes.svg">
+  </a>
  <a href="https://codemagic.io/apps/5e337605cb139582fb63de68/5e337605cb139582fb63de67/latest_build">
     <img alt="Build Status" src="https://api.codemagic.io/apps/5e337605cb139582fb63de68/5e337605cb139582fb63de67/status_badge.svg">
   </a>
@@ -14,10 +17,16 @@ There are two main ways to use this package.
 
 ### 1. Default by using device region
 This will allow you to fetch the region of the underlying platform and display the data accordingly. Very handy if you use along with the `DialCodeFormatter` to provide integration with dial codes formatter, on phone `TextFormField`s in a `Form`, for example.
+
+Assuming an **en-US** region based revice.
 ```
 await CountryCodes.init();
-final CountryDetails details = CountryDetails.detailsForLocale();
 
+final Locale deviceLocale = CountryCodes.getDeviceLocale();
+print(deviceLocale.languageCode); // Displays en
+print(deviceLocale.countryCode); // Displays US
+
+final CountryDetails details = CountryDetails.detailsForLocale();
 print(details.alpha2Code); // Displays alpha2Code, for example US.
 print(details.dialCode); // Displays the dial code, for example +1.
 print(details.name); // Displays the extended name, for example United States.
@@ -43,6 +52,10 @@ TextFormField(
            inputFormatters: [DialCodeFormatter()],
           );
 ```
+
+# Example app
+![Example](https://github.com/miguelpruivo/country_codes/blob/master/example/example.png)
+
 
 ## Getting Started
 
