@@ -8,6 +8,7 @@ import 'package:flutter/widgets.dart';
 class CountryCodes {
   static const MethodChannel _channel = const MethodChannel('country_codes');
   static Locale _deviceLocale;
+  static Map<String, String> _localizedCountryNames;
 
   static String _resolveLocale(Locale locale) {
     locale ??= _deviceLocale;
@@ -19,13 +20,23 @@ class CountryCodes {
   /// Inits the underlying plugin channel and fetch current's device locale to be ready
   /// to use synchronously when required.
   ///
-  /// If you don't plan to provide a `locale`, you should call and await this
+  /// If you never plan to provide a `locale` directly, you must call and await this
   /// by calling `await CountryCodes.init();` before accessing any other method.
-  static Future<bool> init() async {
-    final List<String> locale =
-        List<String>.from(await _channel.invokeMethod('getLocale'));
+  ///
+  /// Optionally, you may want to provide your [appLocale] to access localized
+  /// country name (eg. if your app is in English, display Italy instead of Italia).
+  ///
+  /// Example:
+  /// ```dart
+  /// CountryCodes.init(Localizations.localeOf(context))
+  /// ```
+  /// This will default to device's language if none is provided.
+  static Future<bool> init([Locale appLocale]) async {
+    final List<dynamic> locale = List<dynamic>.from(
+        await _channel.invokeMethod('getLocale', appLocale?.toLanguageTag()));
     if (locale != null) {
       _deviceLocale = Locale(locale[0], locale[1]);
+      _localizedCountryNames = Map.from(locale[2]);
     }
     return _deviceLocale != null;
   }
@@ -50,33 +61,44 @@ class CountryCodes {
   /// Have in mind that this is different than specifying `supportedLocale`s
   /// on your app.
   /// Exposed properties are the `name`, `alpha2Code`, `alpha3Code` and `dialCode`
-  /// Eg.
-  /// ```
+  ///
+  /// Example:
+  /// ```dart
   /// "name": "United States",
   /// "alpha2Code": "US",
   /// "dial_code": "+1",
   /// ```
   static CountryDetails detailsForLocale([Locale locale]) {
-    return CountryDetails.fromMap(codes[_resolveLocale(locale)]);
+    String code = _resolveLocale(locale);
+    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code]);
   }
 
   /// Returns the ISO 3166-1 `alpha2Code` for the given [locale].
   /// If not provided, device's locale will be used instead.
   /// You can read more about ISO 3166-1 codes [here](https://en.wikipedia.org/wiki/ISO_3166-1)
-  /// Eg. (`US`, `PT`, etc.)
+  ///
+  /// Example: (`US`, `PT`, etc.)
   static String alpha2Code([Locale locale]) {
-    return CountryDetails.fromMap(codes[_resolveLocale(locale)]).alpha2Code;
+    String code = _resolveLocale(locale);
+    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
+        .alpha2Code;
   }
 
   /// Returns the `dialCode` for the given [locale] or device's locale, if not provided.
-  /// Eg. (`+1`, `+351`, etc.)
+  ///
+  /// Example: (`+1`, `+351`, etc.)
   static String dialCode([Locale locale]) {
-    return CountryDetails.fromMap(codes[_resolveLocale(locale)]).dialCode;
+    String code = _resolveLocale(locale);
+    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
+        .dialCode;
   }
 
-  /// Returns the exended `name` for the given [locale] or device's locale, if not provided.
-  /// Eg. (`United States`, `Portugal`, etc.)
-  static String name([Locale locale]) {
-    return CountryDetails.fromMap(codes[_resolveLocale(locale)]).name;
+  /// Returns the exended `name` for the given [locale] or if not provided, device's locale.
+  ///
+  /// Example: (`United States`, `Portugal`, etc.)
+  static String name({Locale locale}) {
+    String code = _resolveLocale(locale);
+    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
+        .name;
   }
 }

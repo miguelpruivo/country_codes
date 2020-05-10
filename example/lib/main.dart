@@ -10,6 +10,25 @@ void main() async {
 }
 
 class CountryCodesExampleApp extends StatelessWidget {
+  TableRow _buildEntry({String title, String description}) {
+    return TableRow(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(right: 5.0),
+          child: Text(
+            title,
+            textAlign: TextAlign.end,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 5.0),
+          child: Text(description),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,23 +40,49 @@ class CountryCodesExampleApp extends StatelessWidget {
           CountryDetails details = CountryCodes.detailsForLocale();
           Locale locale = CountryCodes.getDeviceLocale();
           return Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                  'Device locale: ${locale.languageCode}-${locale.countryCode}'),
-              Text('Name: ${details.name}'),
-              Text('Alpha 2: ${details.alpha2Code}'),
-              Text('Dial Code: ${details.dialCode}'),
-              SizedBox(
-                width: 200.0,
-                child: TextFormField(
-                  keyboardType: TextInputType.phone,
-                  inputFormatters: [DialCodeFormatter()],
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Table(
+                    border: TableBorder(
+                      horizontalInside: const BorderSide(width: 0.5),
+                      verticalInside: const BorderSide(width: 0.5),
+                      top: const BorderSide(),
+                      bottom: const BorderSide(),
+                      left: const BorderSide(),
+                      right: const BorderSide(),
+                    ),
+                    children: <TableRow>[
+                      _buildEntry(
+                          title: 'Device region',
+                          description:
+                              '${locale.languageCode}-${locale.countryCode}'),
+                      _buildEntry(
+                          title: 'Name', description: '${details.name}'),
+                      _buildEntry(
+                          title: 'Localized (PT lang)',
+                          description: '${details.localizedName}'),
+                      _buildEntry(
+                          title: 'Alpha 2',
+                          description: '${details.alpha2Code}'),
+                      _buildEntry(
+                          title: 'Dial code',
+                          description: '${details.dialCode}'),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ));
+                SizedBox(
+                  width: 200.0,
+                  child: TextFormField(
+                    keyboardType: TextInputType.phone,
+                    inputFormatters: [DialCodeFormatter()],
+                  ),
+                ),
+              ],
+            ),
+          );
         }),
       ),
     );

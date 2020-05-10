@@ -20,7 +20,7 @@ This will allow you to fetch the region of the underlying platform and display t
 
 Assuming an **en-US** region based revice.
 ```
-await CountryCodes.init();
+await CountryCodes.init(); // Optionally, you may provide a `Locale` to get countrie's localizadName
 
 final Locale deviceLocale = CountryCodes.getDeviceLocale();
 print(deviceLocale.languageCode); // Displays en
@@ -30,6 +30,7 @@ final CountryDetails details = CountryDetails.detailsForLocale();
 print(details.alpha2Code); // Displays alpha2Code, for example US.
 print(details.dialCode); // Displays the dial code, for example +1.
 print(details.name); // Displays the extended name, for example United States.
+print(details.localizedName); // Displays the extended name based on device's language (or other, if provided on init)
 ```
 ### 2. Use a custom `Locale`
 This will use the provided `Locale`, which may not be related to the device's region but instead to the app supported languages.
