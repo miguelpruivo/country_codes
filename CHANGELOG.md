@@ -1,3 +1,7 @@
+## [1.0.0+1] - 08/07/2020
+
+* Updates assert to also validate that `countryCode` is not `null`.
+
 ## [1.0.0] - 10/05/2020
 
 * Added `localizedName` property to `CountryDetails`. This allows you to display any country name base on a `Locale` language. Must be set when doing `CountryCodes.init(locale)`, defaults to device's language.
