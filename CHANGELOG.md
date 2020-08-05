@@ -1,3 +1,7 @@
+## [1.0.1] - 05/08/2020
+
+* Sets default `Locale` to en-US whenever a device hasn't a default locale set (typically will happen only on iOS simulators).
+
 ## [1.0.0+1] - 08/07/2020
 
 * Updates assert to also validate that `countryCode` is not `null`.
