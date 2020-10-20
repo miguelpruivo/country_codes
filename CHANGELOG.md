@@ -1,3 +1,7 @@
+## [1.0.2] - 20/10/2020
+
+* Fixes dial code for Shqipëria.
+
 ## [1.0.1] - 05/08/2020
 
 * Sets default `Locale` to en-US whenever a device hasn't a default locale set (typically will happen only on iOS simulators).

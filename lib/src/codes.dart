@@ -12,7 +12,7 @@ const Map<String, dynamic> codes = {
   "AL": {
     "name": "Shqipëria",
     "alpha2Code": "AL",
-    "dial_alpha2alpha2Code": "+355",
+    "dial_code": "+355",
   },
   "DZ": {
     "name": "الجزائر",
