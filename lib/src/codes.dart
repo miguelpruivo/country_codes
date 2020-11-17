@@ -287,7 +287,7 @@ const Map<String, dynamic> codes = {
   "CW": {
     "name": "Curaçao",
     "alpha2Code": "CW",
-    "dial_code": "+5999",
+    "dial_code": "+599",
   },
   "CY": {
     "name": "Κύπρος",
