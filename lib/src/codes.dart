@@ -179,6 +179,11 @@ const Map<String, dynamic> codes = {
     "alpha2Code": "BI",
     "dial_code": "+257",
   },
+  "BQ": {
+    "name": "Bonaire, Sint Eustatius and Saba",
+    "alpha2Code": "BQ",
+    "dial_code": "+599",
+  },
   "KH": {
     "name": "Kâmpŭchéa",
     "alpha2Code": "KH",
@@ -279,6 +284,11 @@ const Map<String, dynamic> codes = {
     "alpha2Code": "CU",
     "dial_code": "+53",
   },
+  "CW": {
+    "name": "Curaçao",
+    "alpha2Code": "CW",
+    "dial_code": "+599",
+  },
   "CY": {
     "name": "Κύπρος",
     "alpha2Code": "CY",
@@ -338,6 +348,11 @@ const Map<String, dynamic> codes = {
     "name": "Eesti",
     "alpha2Code": "EE",
     "dial_code": "+372",
+  },
+  "EH": {
+    "name": " الصحراء الغربية‎‎",
+    "alpha2Code": "EH",
+    "dial_code": "+212",
   },
   "ET": {
     "name": "ኢትዮጵያ",
@@ -585,6 +600,7 @@ const Map<String, dynamic> codes = {
     "dial_code": "+82",
   },
   "XK": {
+    // temporary code that is not yet in the ISO country list, but is still generally accepted
     "name": "Republika e Kosovës",
     "alpha2Code": "XK",
     "dial_code": "+383",
@@ -779,11 +795,6 @@ const Map<String, dynamic> codes = {
     "alpha2Code": "NL",
     "dial_code": "+31",
   },
-  "AN": {
-    "name": "Netherlands Antilles",
-    "alpha2Code": "AN",
-    "dial_code": "+599",
-  },
   "NC": {
     "name": "Nouvelle-Calédonie",
     "alpha2Code": "NC",
@@ -889,11 +900,6 @@ const Map<String, dynamic> codes = {
     "alpha2Code": "PT",
     "dial_code": "+351",
   },
-  "PRI": {
-    "name": "Puerto Rico",
-    "alpha2Code": "PRI",
-    "dial_code": "+1939",
-  },
   "PR": {
     "name": "Puerto Rico",
     "alpha2Code": "PR",
@@ -945,7 +951,7 @@ const Map<String, dynamic> codes = {
     "dial_code": "+1758",
   },
   "MF": {
-    "name": "Saint-Martin",
+    "name": "Saint Martin (French part)",
     "alpha2Code": "MF",
     "dial_code": "+590",
   },
@@ -1064,6 +1070,11 @@ const Map<String, dynamic> codes = {
     "alpha2Code": "SJ",
     "dial_code": "+47",
   },
+  "SQ": {
+    "name": "Sint Maarten (Dutch part)",
+    "alpha2Code": "SQ",
+    "dial_code": "+599",
+  },
   "SZ": {
     "name": "Swaziland",
     "alpha2Code": "SZ",
@@ -1178,6 +1189,11 @@ const Map<String, dynamic> codes = {
     "name": "United States",
     "alpha2Code": "US",
     "dial_code": "+1",
+  },
+  "UM": {
+    "name": "United States Minor Outlying Islands (the)",
+    "alpha2Code": "UM",
+    "dial_code": "+246",
   },
   "UY": {
     "name": "Uruguay",

@@ -1,3 +1,6 @@
+## [1.0.3] - 17/11/2020
+
+* Adds new codes from Netherlands Antilles dissolution ([#5](https://github.com/miguelpruivo/country_codes/issues/5)). Thanks @comESK.
 ## [1.0.2] - 20/10/2020
 
 * Fixes dial code for Shqipëria.
