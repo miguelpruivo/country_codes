@@ -26,7 +26,7 @@ final Locale deviceLocale = CountryCodes.getDeviceLocale();
 print(deviceLocale.languageCode); // Displays en
 print(deviceLocale.countryCode); // Displays US
 
-final CountryDetails details = CountryDetails.detailsForLocale();
+final CountryDetails details = CountryCodes.detailsForLocale();
 print(details.alpha2Code); // Displays alpha2Code, for example US.
 print(details.dialCode); // Displays the dial code, for example +1.
 print(details.name); // Displays the extended name, for example United States.
