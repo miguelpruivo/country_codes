@@ -49,9 +49,9 @@ print(details.name); // Displays the extended name, Portugal.
 Currently there's only available `TextInputFormatter` which allows you to dynamically set the dial code dynamically on a `TextFormField`. 
 ```
 TextFormField(
-           keyboardType: TextInputType.phone,
-           inputFormatters: [DialCodeFormatter()],
-          );
+  keyboardType: TextInputType.phone,
+  inputFormatters: [DialCodeFormatter()],
+);
 ```
 
 # Example app
