@@ -37,7 +37,7 @@ This will use the provided `Locale`, which may not be related to the device's re
 
 For example, if your device is on US region but the app only supports PT, you'll get the following:
 ```
-final CountryDetails details = CountryDetails.detailsForLocale(Localization.localeOf(context));
+final CountryDetails details = CountryCodes.detailsForLocale(Localization.localeOf(context));
 
 print(details.alpha2Code); // Displays alpha2Code, displays PT.
 print(details.dialCode); // Displays the dial code for PT, +351.
