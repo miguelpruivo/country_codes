@@ -10,7 +10,7 @@ void main() async {
 }
 
 class CountryCodesExampleApp extends StatelessWidget {
-  TableRow _buildEntry({String title, String description}) {
+  TableRow _buildEntry({required String title, required String description}) {
     return TableRow(
       children: <Widget>[
         Padding(
@@ -38,7 +38,7 @@ class CountryCodesExampleApp extends StatelessWidget {
         ),
         body: Builder(builder: (context) {
           CountryDetails details = CountryCodes.detailsForLocale();
-          Locale locale = CountryCodes.getDeviceLocale();
+          Locale locale = CountryCodes.getDeviceLocale()!;
           return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
