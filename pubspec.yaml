@@ -1,6 +1,6 @@
 name: country_codes
 description: Country codes is an helper package that provides country details given a particular localization, such as dial codes, ISO 3166 codes (alpha-2, alpha-3) and country names.
-version: 1.1.0
+version: 2.0.0
 homepage: https://github.com/miguelpruivo/country_codes
 
 environment:
