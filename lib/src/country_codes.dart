@@ -7,16 +7,16 @@ import 'package:flutter/widgets.dart';
 
 class CountryCodes {
   static const MethodChannel _channel = const MethodChannel('country_codes');
-  static Locale _deviceLocale;
-  static Map<String, String> _localizedCountryNames;
+  static Locale? _deviceLocale;
+  static late Map<String, String> _localizedCountryNames;
 
-  static String _resolveLocale(Locale locale) {
+  static String? _resolveLocale(Locale? locale) {
     locale ??= _deviceLocale;
     assert(locale != null && locale.countryCode != null, '''
          Locale and country code cannot be null. If you are using an iOS simulator, please, make sure you go to region settings and select any country (even if it\'s already selected) because otherwise your country might be null.
          If you didn\'t provide one, please make sure you call init before using Country Details
         ''');
-    return locale.countryCode;
+    return locale!.countryCode;
   }
 
   /// Inits the underlying plugin channel and fetch current's device locale to be ready
@@ -33,10 +33,9 @@ class CountryCodes {
   /// CountryCodes.init(Localizations.localeOf(context))
   /// ```
   /// This will default to device's language if none is provided.
-  static Future<bool> init([Locale appLocale]) async {
-    final List<dynamic> locale = List<dynamic>.from(await _channel.invokeMethod(
-            'getLocale', appLocale?.toLanguageTag())) ??
-        const Locale('en', 'US');
+  static Future<bool> init([Locale? appLocale]) async {
+    final List<dynamic> locale = List<dynamic>.from(await (_channel.invokeMethod(
+            'getLocale', appLocale?.toLanguageTag())));
     if (locale != null) {
       _deviceLocale = Locale(locale[0], locale[1]);
       _localizedCountryNames = Map.from(locale[2]);
@@ -46,14 +45,14 @@ class CountryCodes {
 
   /// Returns the current device's `Locale`
   /// Eg. `Locale('en','US')`
-  static Locale getDeviceLocale() {
+  static Locale? getDeviceLocale() {
     assert(_deviceLocale != null,
         'Please, make sure you call await init() before calling getDeviceLocale()');
     return _deviceLocale;
   }
 
   /// A list of dial codes for every country
-  static List<String> dialNumbers() {
+  static List<String?> dialNumbers() {
     return codes.values
         .map((each) => CountryDetails.fromMap(each).dialCode)
         .toList();
@@ -71,9 +70,9 @@ class CountryCodes {
   /// "alpha2Code": "US",
   /// "dial_code": "+1",
   /// ```
-  static CountryDetails detailsForLocale([Locale locale]) {
-    String code = _resolveLocale(locale);
-    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code]);
+  static CountryDetails detailsForLocale([Locale? locale]) {
+    String? code = _resolveLocale(locale);
+    return CountryDetails.fromMap(codes[code!], _localizedCountryNames[code]);
   }
 
   /// Returns the ISO 3166-1 `alpha2Code` for the given [locale].
@@ -81,27 +80,27 @@ class CountryCodes {
   /// You can read more about ISO 3166-1 codes [here](https://en.wikipedia.org/wiki/ISO_3166-1)
   ///
   /// Example: (`US`, `PT`, etc.)
-  static String alpha2Code([Locale locale]) {
-    String code = _resolveLocale(locale);
-    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
+  static String? alpha2Code([Locale? locale]) {
+    String? code = _resolveLocale(locale);
+    return CountryDetails.fromMap(codes[code!], _localizedCountryNames[code])
         .alpha2Code;
   }
 
   /// Returns the `dialCode` for the given [locale] or device's locale, if not provided.
   ///
   /// Example: (`+1`, `+351`, etc.)
-  static String dialCode([Locale locale]) {
-    String code = _resolveLocale(locale);
-    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
+  static String? dialCode([Locale? locale]) {
+    String? code = _resolveLocale(locale);
+    return CountryDetails.fromMap(codes[code!], _localizedCountryNames[code])
         .dialCode;
   }
 
   /// Returns the exended `name` for the given [locale] or if not provided, device's locale.
   ///
   /// Example: (`United States`, `Portugal`, etc.)
-  static String name({Locale locale}) {
-    String code = _resolveLocale(locale);
-    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
+  static String? name({Locale? locale}) {
+    String? code = _resolveLocale(locale);
+    return CountryDetails.fromMap(codes[code!], _localizedCountryNames[code])
         .name;
   }
 }
