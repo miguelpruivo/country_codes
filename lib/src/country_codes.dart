@@ -34,8 +34,8 @@ class CountryCodes {
   /// ```
   /// This will default to device's language if none is provided.
   static Future<bool> init([Locale? appLocale]) async {
-    final List<dynamic> locale = List<dynamic>.from(await (_channel.invokeMethod(
-            'getLocale', appLocale?.toLanguageTag())));
+    final List<dynamic> locale = List<dynamic>.from(
+        await (_channel.invokeMethod('getLocale', appLocale?.toLanguageTag())));
     if (locale != null) {
       _deviceLocale = Locale(locale[0], locale[1]);
       _localizedCountryNames = Map.from(locale[2]);
