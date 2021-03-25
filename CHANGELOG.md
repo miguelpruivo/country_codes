@@ -1,3 +1,11 @@
+## [2.0.1] - 25/03/2021
+
+* Updates gradle to 5.4.1. ([#15](https://github.com/miguelpruivo/country_codes/issues/15))
+
+## [2.0.0] - 25/03/2021
+
+* Updates to null safety. Thank you @AntonyLeons.
+
 ## [1.0.3] - 17/11/2020
 
 * Adds new codes from Netherlands Antilles dissolution ([#5](https://github.com/miguelpruivo/country_codes/issues/5)). Thanks @comESK.
