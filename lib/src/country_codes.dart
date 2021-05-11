@@ -103,4 +103,20 @@ class CountryCodes {
     return CountryDetails.fromMap(codes[code!], _localizedCountryNames[code])
         .name;
   }
+
+  /// Returns the `CountryDetails` for the given [dialCode].
+  /// If details for [dialCode] not found, returns null.
+  ///
+  /// Example:
+  /// ```dart
+  /// final country = CountryCodes.detailsFromDialCode('+1');
+  /// print(country.name) // Canada
+  /// ```
+  static CountryDetails? detailsFromDialCode(String dialCode) {
+    final data = codes.values.firstWhere(
+      (element) => element['dial_code'] == dialCode,
+      orElse: () => null,
+    );
+    if (data != null) return CountryDetails.fromMap(data);
+  }
 }
