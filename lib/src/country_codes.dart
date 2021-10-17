@@ -58,6 +58,13 @@ class CountryCodes {
         .toList();
   }
 
+  /// A list of country data for every country
+  static List<CountryDetails?> countryCodes() {
+    return codes.values
+        .map((each) => CountryDetails.fromMap(each))
+        .toList();
+  }
+
   /// Returns the `CountryDetails` for the given [locale]. If not provided,
   /// the device's locale will be used instead.
   /// Have in mind that this is different than specifying `supportedLocale`s
