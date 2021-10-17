@@ -1,3 +1,7 @@
+## [2.1.0] - 17/10/2021
+
+* Adds a method to get a `List` with all country's details ([#16](https://github.com/miguelpruivo/country_codes/issues/16#issuecomment-945192260)). Thank you @wizlif.
+
 ## [2.0.1] - 25/03/2021
 
 * Updates gradle to 5.4.1. ([#15](https://github.com/miguelpruivo/country_codes/issues/15))
