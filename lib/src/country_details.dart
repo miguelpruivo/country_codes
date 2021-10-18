@@ -1,11 +1,11 @@
 class CountryDetails {
   /// Dial code represents a global phone prefix for the region
   /// Example: `+1`, `+351`
-  final String? dialCode;
+  final String dialCode;
 
   /// ISO 3166 alpha 2 code
   /// Example: `US`, `PT`
-  final String? alpha2Code;
+  final String alpha2Code;
 
   /// ISO 3166 alpha 3 code
   /// Example: `USA`, `PRT`
@@ -17,7 +17,7 @@ class CountryDetails {
   /// US : United States
   /// IT : Italia
   /// DE : Deutschland
-  final String? name;
+  final String name;
 
   /// Extended country name based on a region language
   ///
