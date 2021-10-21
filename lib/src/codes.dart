@@ -1070,9 +1070,9 @@ const Map<String, dynamic> codes = {
     "alpha2Code": "SJ",
     "dial_code": "+47",
   },
-  "SQ": {
+  "SX": {
     "name": "Sint Maarten (Dutch part)",
-    "alpha2Code": "SQ",
+    "alpha2Code": "SX",
     "dial_code": "+599",
   },
   "SZ": {

@@ -1,3 +1,7 @@
+## [2.1.1] - 21/10/2021
+
+* Fixes Sint Marteen code ([#20](https://github.com/miguelpruivo/country_codes/issues/20)).
+
 ## [2.1.0] - 17/10/2021
 
 * Adds a method to get a `List` with all country's details ([#16](https://github.com/miguelpruivo/country_codes/issues/16#issuecomment-945192260)). Thank you @wizlif.
