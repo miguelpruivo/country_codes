@@ -786,7 +786,7 @@ const Map<String, dynamic> codes = {
     "dial_code": "+674",
   },
   "NP": {
-    "name": "नपल",
+    "name": "नेपाल",
     "alpha2Code": "NP",
     "dial_code": "+977",
   },
