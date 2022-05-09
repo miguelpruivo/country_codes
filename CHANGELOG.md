@@ -1,3 +1,7 @@
+## [2.2.0] - 10/05/2022
+
+* Upgrades to Android project (pre 1.12). Thank you @vergardan.
+
 ## [2.1.1] - 21/10/2021
 
 * Fixes Sint Marteen code ([#20](https://github.com/miguelpruivo/country_codes/issues/20)).
