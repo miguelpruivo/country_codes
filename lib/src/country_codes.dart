@@ -59,8 +59,11 @@ class CountryCodes {
   }
 
   /// A list of country data for every country
-  static List<CountryDetails?> countryCodes() {
-    return codes.values.map((each) => CountryDetails.fromMap(each)).toList();
+  static List<CountryDetails> countryCodes() {
+    return codes.entries
+        .map((entry) => CountryDetails.fromMap(
+            entry.value, _localizedCountryNames[entry.key]))
+        .toList();
   }
 
   /// Returns the `CountryDetails` for the given [locale]. If not provided,
