@@ -23,3 +23,5 @@ flutter:
         pluginClass: CountryCodesPlugin
       ios:
         pluginClass: CountryCodesPlugin
+      macos:
+        pluginClass: CountryCodesPlugin
