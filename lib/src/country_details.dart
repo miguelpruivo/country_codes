@@ -11,6 +11,10 @@ class CountryDetails {
   /// Example: `USA`, `PRT`
   final String? alpha3Code;
 
+  /// Country code
+  /// Example: `en_US`
+  final String? countryCode;
+
   /// Extended country name in its own language
   ///
   /// Examples:
@@ -33,5 +37,6 @@ class CountryDetails {
         this.alpha2Code = data['alpha2Code'],
         this.alpha3Code = data['alpha3Code'],
         this.dialCode = data['dial_code'],
+        this.countryCode = data['country_code'],
         this.localizedName = localizedCountryName;
 }
