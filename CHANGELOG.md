@@ -1,3 +1,6 @@
+## [3.1.0] - 14/05/2024
+* Adds `countryCode` property.
+
 ## [3.0.0] - 13/05/2024
 * Adds Android namespace and other minor improvements.
 
