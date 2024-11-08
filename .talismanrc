@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: lib/src/country_codes.dart
+  checksum: 0095d5be1ed38977002a7132ad69b6dad5454e92d61965523dbbf778c399f72f
+version: "1.0"
