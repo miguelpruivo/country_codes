@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:country_codes/src/codes.dart';
 import 'package:country_codes/src/country_details.dart';
+import 'package:country_codes/src/sub_regions.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
@@ -37,7 +38,13 @@ class CountryCodes {
     final List<dynamic>? locale = List<dynamic>.from(
         await (_channel.invokeMethod('getLocale', appLocale?.toLanguageTag())));
     if (locale != null) {
-      _deviceLocale = Locale(locale[0], locale[1]);
+      String countryCode = locale[1];
+
+      if (!codes.containsKey(countryCode)) {
+        countryCode = subRegionToCountryCode[countryCode] ?? countryCode;
+      }
+
+      _deviceLocale = Locale(locale[0], countryCode);
       _localizedCountryNames = Map.from(locale[2]);
     }
     return _deviceLocale != null;
@@ -85,9 +92,9 @@ class CountryCodes {
 
   /// Returns the `CountryDetails` for the given country alpha2 code.
   static CountryDetails detailsFromAlpha2(String alpha2) {
-    return CountryDetails.fromMap(codes.entries.where((entry) => entry.key == alpha2).single.value);
+    return CountryDetails.fromMap(
+        codes.entries.where((entry) => entry.key == alpha2).single.value);
   }
-
 
   /// Returns the ISO 3166-1 `alpha2Code` for the given [locale].
   /// If not provided, device's locale will be used instead.
