@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter/services.dart';
 import 'package:country_codes/country_codes.dart';
+import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

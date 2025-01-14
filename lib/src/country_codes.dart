@@ -103,7 +103,12 @@ class CountryCodes {
   /// Example: (`US`, `PT`, etc.)
   static String? alpha2Code([Locale? locale]) {
     String? code = _resolveLocale(locale);
-    return CountryDetails.fromMap(codes[code!], _localizedCountryNames[code])
+
+    if (code == null) {
+      return null;
+    }
+
+    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
         .alpha2Code;
   }
 
@@ -112,7 +117,12 @@ class CountryCodes {
   /// Example: (`+1`, `+351`, etc.)
   static String? dialCode([Locale? locale]) {
     String? code = _resolveLocale(locale);
-    return CountryDetails.fromMap(codes[code!], _localizedCountryNames[code])
+
+    if (code == null) {
+      return null;
+    }
+
+    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
         .dialCode;
   }
 
@@ -121,7 +131,12 @@ class CountryCodes {
   /// Example: (`United States`, `Portugal`, etc.)
   static String? name({Locale? locale}) {
     String? code = _resolveLocale(locale);
-    return CountryDetails.fromMap(codes[code!], _localizedCountryNames[code])
+
+    if (code == null) {
+      return null;
+    }
+
+    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
         .name;
   }
 }

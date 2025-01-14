@@ -1,3 +1,7 @@
+## [3.2.0] - 14/05/2024
+* Adds sub regions.
+* Addresses an issue when the code could not be resolved and an exception was thrown.
+
 ## [3.1.0] - 14/05/2024
 * Adds `countryCode` property.
 
