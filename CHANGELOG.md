@@ -1,3 +1,6 @@
+## [3.2.1] - 29/01/2025
+* Address an issue where init could use an empty list.
+
 ## [3.2.0] - 14/05/2024
 * Adds sub regions.
 * Addresses an issue when the code could not be resolved and an exception was thrown.

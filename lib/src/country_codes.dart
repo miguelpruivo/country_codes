@@ -37,7 +37,7 @@ class CountryCodes {
   static Future<bool> init([Locale? appLocale]) async {
     final List<dynamic>? locale = List<dynamic>.from(
         await (_channel.invokeMethod('getLocale', appLocale?.toLanguageTag())));
-    if (locale != null) {
+    if (locale != null && locale.length == 2) {
       String countryCode = locale[1];
 
       if (!codes.containsKey(countryCode)) {
