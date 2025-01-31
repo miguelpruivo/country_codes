@@ -1,3 +1,6 @@
+## [3.2.2] - 31/01/2025
+* Handles an issue where the country code could not be resolved and an exception was thrown.
+
 ## [3.2.1] - 29/01/2025
 * Address an issue where init could use an empty list.
 

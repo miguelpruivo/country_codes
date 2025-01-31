@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:country_codes/src/codes.dart';
 import 'package:country_codes/src/country_details.dart';
@@ -102,41 +103,56 @@ class CountryCodes {
   ///
   /// Example: (`US`, `PT`, etc.)
   static String? alpha2Code([Locale? locale]) {
-    String? code = _resolveLocale(locale);
+    try {
+      String? code = _resolveLocale(locale);
 
-    if (code == null) {
+      if (code == null) {
+        return null;
+      }
+
+      return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
+          .alpha2Code;
+    } catch (ex) {
+      debugPrint('Failed to get alpha2 code for locale: $locale');
       return null;
     }
-
-    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
-        .alpha2Code;
   }
 
   /// Returns the `dialCode` for the given [locale] or device's locale, if not provided.
   ///
   /// Example: (`+1`, `+351`, etc.)
   static String? dialCode([Locale? locale]) {
-    String? code = _resolveLocale(locale);
+    try {
+      String? code = _resolveLocale(locale);
 
-    if (code == null) {
+      if (code == null) {
+        return null;
+      }
+
+      return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
+          .dialCode;
+    } catch (ex) {
+      debugPrint('Failed to get dial code for locale: $locale');
       return null;
     }
-
-    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
-        .dialCode;
   }
 
   /// Returns the exended `name` for the given [locale] or if not provided, device's locale.
   ///
   /// Example: (`United States`, `Portugal`, etc.)
   static String? name({Locale? locale}) {
-    String? code = _resolveLocale(locale);
+    try {
+      String? code = _resolveLocale(locale);
 
-    if (code == null) {
+      if (code == null) {
+        return null;
+      }
+
+      return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
+          .name;
+    } catch (ex) {
+      debugPrint('Failed to get name for locale: $locale');
       return null;
     }
-
-    return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
-        .name;
   }
 }
