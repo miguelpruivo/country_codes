@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:country_codes/src/codes.dart';
 import 'package:country_codes/src/country_details.dart';
@@ -36,8 +35,7 @@ class CountryCodes {
   /// ```
   /// This will default to device's language if none is provided.
   static Future<bool> init([Locale? appLocale]) async {
-    final List<dynamic>? locale = List<dynamic>.from(
-        await (_channel.invokeMethod('getLocale', appLocale?.toLanguageTag())));
+    final List<dynamic>? locale = List<dynamic>.from(await (_channel.invokeMethod('getLocale', appLocale?.toLanguageTag())));
     if (locale != null && locale.length == 2) {
       String countryCode = locale[1];
 
@@ -54,24 +52,18 @@ class CountryCodes {
   /// Returns the current device's `Locale`
   /// Eg. `Locale('en','US')`
   static Locale? getDeviceLocale() {
-    assert(_deviceLocale != null,
-        'Please, make sure you call await init() before calling getDeviceLocale()');
+    assert(_deviceLocale != null, 'Please, make sure you call await init() before calling getDeviceLocale()');
     return _deviceLocale;
   }
 
   /// A list of dial codes for every country
   static List<String?> dialNumbers() {
-    return codes.values
-        .map((each) => CountryDetails.fromMap(each).dialCode)
-        .toList();
+    return codes.values.map((each) => CountryDetails.fromMap(each).dialCode).toList();
   }
 
   /// A list of country data for every country
   static List<CountryDetails> countryCodes() {
-    return codes.entries
-        .map((entry) => CountryDetails.fromMap(
-            entry.value, _localizedCountryNames[entry.key]))
-        .toList();
+    return codes.entries.map((entry) => CountryDetails.fromMap(entry.value, _localizedCountryNames[entry.key])).toList();
   }
 
   /// Returns the `CountryDetails` for the given [locale]. If not provided,
@@ -93,8 +85,7 @@ class CountryCodes {
 
   /// Returns the `CountryDetails` for the given country alpha2 code.
   static CountryDetails detailsFromAlpha2(String alpha2) {
-    return CountryDetails.fromMap(
-        codes.entries.where((entry) => entry.key == alpha2).single.value);
+    return CountryDetails.fromMap(codes.entries.where((entry) => entry.key == alpha2).single.value);
   }
 
   /// Returns the ISO 3166-1 `alpha2Code` for the given [locale].
@@ -110,8 +101,7 @@ class CountryCodes {
         return null;
       }
 
-      return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
-          .alpha2Code;
+      return CountryDetails.fromMap(codes[code], _localizedCountryNames[code]).alpha2Code;
     } catch (ex) {
       debugPrint('Failed to get alpha2 code for locale: $locale');
       return null;
@@ -129,8 +119,7 @@ class CountryCodes {
         return null;
       }
 
-      return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
-          .dialCode;
+      return CountryDetails.fromMap(codes[code], _localizedCountryNames[code]).dialCode;
     } catch (ex) {
       debugPrint('Failed to get dial code for locale: $locale');
       return null;
@@ -148,8 +137,7 @@ class CountryCodes {
         return null;
       }
 
-      return CountryDetails.fromMap(codes[code], _localizedCountryNames[code])
-          .name;
+      return CountryDetails.fromMap(codes[code], _localizedCountryNames[code]).name;
     } catch (ex) {
       debugPrint('Failed to get name for locale: $locale');
       return null;
