@@ -1,3 +1,6 @@
+## [3.2.2+3] - 31/01/2025
+* Fix minor regression where `init` would fail if the device's locale was null.
+
 ## [3.2.2] - 31/01/2025
 * Handles an issue where the country code could not be resolved and an exception was thrown.
 
