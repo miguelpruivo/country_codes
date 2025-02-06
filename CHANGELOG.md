@@ -1,3 +1,6 @@
+## [3.2.3+1] - 06/02/2025
+* Add onInvalidLocale callback to `name` method.
+
 ## [3.2.2+3] - 31/01/2025
 * Fix minor regression where `init` would fail if the device's locale was null.
 

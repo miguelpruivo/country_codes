@@ -129,7 +129,7 @@ class CountryCodes {
   /// Returns the exended `name` for the given [locale] or if not provided, device's locale.
   ///
   /// Example: (`United States`, `Portugal`, etc.)
-  static String? name({Locale? locale}) {
+  static String? name({Locale? locale, VoidCallback? onInvalidLocale}) {
     try {
       String? code = _resolveLocale(locale);
 
@@ -139,6 +139,9 @@ class CountryCodes {
 
       return CountryDetails.fromMap(codes[code], _localizedCountryNames[code]).name;
     } catch (ex) {
+      if (onInvalidLocale != null) {
+        onInvalidLocale();
+      }
       debugPrint('Failed to get name for locale: $locale');
       return null;
     }
