@@ -1,3 +1,6 @@
+## [3.3.0] - 02/13/2025
+* Removed old pre-Flutter-1.12 Android project plugin method `registerWith` which has been removed from flutter 3.29.0
+
 ## [3.2.3+1] - 06/02/2025
 * Add onInvalidLocale callback to `name` method.
 
