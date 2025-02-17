@@ -85,7 +85,7 @@ class CountryCodes {
 
   /// Returns the `CountryDetails` for the given country alpha2 code.
   static CountryDetails detailsFromAlpha2(String alpha2) {
-    var codeEntry = codes.entries.where((entry) => entry.key == alpha2).single;
+    MapEntry<String, dynamic> codeEntry = codes.entries.where((entry) => entry.key == alpha2).single;
     return CountryDetails.fromMap(codeEntry.value, _localizedCountryNames[codeEntry.key]);
   }
 
