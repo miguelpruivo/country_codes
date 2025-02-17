@@ -85,7 +85,8 @@ class CountryCodes {
 
   /// Returns the `CountryDetails` for the given country alpha2 code.
   static CountryDetails detailsFromAlpha2(String alpha2) {
-    return CountryDetails.fromMap(codes.entries.where((entry) => entry.key == alpha2).single.value);
+    MapEntry<String, dynamic> codeEntry = codes.entries.where((entry) => entry.key == alpha2).single;
+    return CountryDetails.fromMap(codeEntry.value, _localizedCountryNames[codeEntry.key]);
   }
 
   /// Returns the ISO 3166-1 `alpha2Code` for the given [locale].
