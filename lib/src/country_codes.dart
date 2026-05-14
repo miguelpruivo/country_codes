@@ -9,7 +9,11 @@ import 'package:flutter/widgets.dart';
 class CountryCodes {
   static const MethodChannel _channel = const MethodChannel('country_codes');
   static Locale? _deviceLocale;
-  static late Map<String, String> _localizedCountryNames;
+  static Map<String, String> _localizedCountryNames = {};
+
+  static CountryDetails _emptyDetails() {
+    return CountryDetails.fromMap(const <String, dynamic>{});
+  }
 
   static String? _resolveLocale(Locale? locale) {
     locale ??= _deviceLocale;
@@ -35,16 +39,27 @@ class CountryCodes {
   /// ```
   /// This will default to device's language if none is provided.
   static Future<bool> init([Locale? appLocale]) async {
-    final List<dynamic>? locale = List<dynamic>.from(await (_channel.invokeMethod('getLocale', appLocale?.toLanguageTag())));
-    if (locale != null && locale.length >= 2) {
-      String countryCode = locale[1];
+    final locale =
+        await _channel.invokeMethod('getLocale', appLocale?.toLanguageTag());
+
+    if (locale is List && locale.length >= 2) {
+      final languageCode = locale[0]?.toString();
+      String? countryCode = locale[1]?.toString();
+
+      if (languageCode == null || countryCode == null) {
+        return _deviceLocale != null;
+      }
 
       if (!codes.containsKey(countryCode)) {
         countryCode = subRegionToCountryCode[countryCode] ?? countryCode;
       }
 
-      _deviceLocale = Locale(locale[0], countryCode);
-      _localizedCountryNames = Map.from(locale[2]);
+      final localizedCountryNames = locale.length > 2 ? locale[2] : null;
+
+      _deviceLocale = Locale(languageCode, countryCode);
+      _localizedCountryNames = localizedCountryNames is Map
+          ? Map<String, String>.from(localizedCountryNames)
+          : {};
     }
     return _deviceLocale != null;
   }
@@ -79,8 +94,23 @@ class CountryCodes {
   /// "dial_code": "+1",
   /// ```
   static CountryDetails detailsForLocale([Locale? locale]) {
-    String? code = _resolveLocale(locale);
-    return CountryDetails.fromMap(codes[code!], _localizedCountryNames[code]);
+    try {
+      String? code = _resolveLocale(locale);
+
+      if (code == null) {
+        return _emptyDetails();
+      }
+
+      final countryData = codes[code];
+      if (countryData is! Map<String, dynamic>) {
+        return _emptyDetails();
+      }
+
+      return CountryDetails.fromMap(countryData, _localizedCountryNames[code]);
+    } catch (ex) {
+      debugPrint('Failed to get details for locale: $locale');
+      return _emptyDetails();
+    }
   }
 
   /// Returns the `CountryDetails` for the given country alpha2 code.

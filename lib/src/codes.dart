@@ -97,6 +97,13 @@ const Map<String, dynamic> codes = {
     "dial_code": "+43",
     "country_code": "de_AT"
   },
+  "AX": {
+    "name": "Åland Islands",
+    "alpha2Code": "AX",
+    "alpha3Code": "ALA",
+    "dial_code": "+358",
+    "country_code": "sv_AX"
+  },
   "AZ": {
     "name": "Azerbaijan",
     "alpha2Code": "AZ",
@@ -1706,6 +1713,13 @@ const Map<String, dynamic> codes = {
     "alpha3Code": "ESH",
     "dial_code": "+212",
     "country_code": "es_EH"
+  },
+  "XK": {
+    "name": "Kosovo",
+    "alpha2Code": "XK",
+    "alpha3Code": "XKX",
+    "dial_code": "+383",
+    "country_code": "en_XK"
   },
   "YE": {
     "name": "Yemen",
