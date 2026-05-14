@@ -34,4 +34,13 @@ void main() {
     expect(await CountryCodes.init(), isTrue);
     expect(CountryCodes.getDeviceLocale(), const Locale('en', 'GB'));
   });
+
+  test('detailsForLocale keeps a non-null result for unknown country codes',
+      () {
+    final CountryDetails details =
+        CountryCodes.detailsForLocale(const Locale('en', 'ZZ'));
+
+    expect(details.alpha2Code, isNull);
+    expect(details.dialCode, isNull);
+  });
 }

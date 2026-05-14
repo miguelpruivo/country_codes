@@ -11,6 +11,10 @@ class CountryCodes {
   static Locale? _deviceLocale;
   static Map<String, String> _localizedCountryNames = {};
 
+  static CountryDetails _emptyDetails() {
+    return CountryDetails.fromMap(const <String, dynamic>{});
+  }
+
   static String? _resolveLocale(Locale? locale) {
     locale ??= _deviceLocale;
     assert(locale != null && locale.countryCode != null, '''
@@ -89,18 +93,23 @@ class CountryCodes {
   /// "alpha2Code": "US",
   /// "dial_code": "+1",
   /// ```
-  static CountryDetails? detailsForLocale([Locale? locale]) {
+  static CountryDetails detailsForLocale([Locale? locale]) {
     try {
       String? code = _resolveLocale(locale);
 
       if (code == null) {
-        return null;
+        return _emptyDetails();
       }
 
-      return CountryDetails.fromMap(codes[code], _localizedCountryNames[code]);
+      final countryData = codes[code];
+      if (countryData is! Map<String, dynamic>) {
+        return _emptyDetails();
+      }
+
+      return CountryDetails.fromMap(countryData, _localizedCountryNames[code]);
     } catch (ex) {
       debugPrint('Failed to get details for locale: $locale');
-      return null;
+      return _emptyDetails();
     }
   }
 
