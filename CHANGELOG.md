@@ -1,3 +1,9 @@
+## [3.4.0] - 14/07/2026
+* Added Swift Package Manager (SPM) support for iOS and macOS (Flutter 3.44+).
+* Migrated native sources to the standard SPM package layout.
+* Unified iOS implementation as Swift-only (matching macOS).
+* Raised minimum iOS deployment target to 13.0 and macOS to 10.15.
+
 ## [3.3.0] - 02/13/2025
 * Removed old pre-Flutter-1.12 Android project plugin method `registerWith` which has been removed from flutter 3.29.0
 
