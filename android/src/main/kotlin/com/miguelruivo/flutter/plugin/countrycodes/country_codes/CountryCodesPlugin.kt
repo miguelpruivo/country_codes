@@ -34,7 +34,7 @@ public class CountryCodesPlugin: FlutterPlugin, MethodCallHandler {
     for (countryCode in Locale.getISOCountries()) {
       val locale = Locale(localeTag ?: deviceCountry,countryCode)
       var countryName: String? = locale.getDisplayCountry(Locale.forLanguageTag(localeTag ?: deviceCountry))
-      localizedCountries[countryCode.toUpperCase()] = countryName ?: "";
+      localizedCountries[countryCode.uppercase()] = countryName ?: "";
     }
     return localizedCountries
   }

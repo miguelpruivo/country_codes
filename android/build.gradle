@@ -22,7 +22,6 @@ rootProject.allprojects {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 31
@@ -30,12 +29,8 @@ android {
       namespace 'com.miguelruivo.flutter.plugin.countrycodes.country_codes'
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = '1.8'
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     sourceSets {
@@ -44,6 +39,12 @@ android {
 
     defaultConfig {
         minSdkVersion 16
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
 }
 
